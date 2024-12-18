@@ -44,7 +44,7 @@ jobs:
           role-session-name: Terraform_OIDC
           aws-region: ${{ inputs.aws_region }}
       
-      - Read destroy configuration
+      - name: Read destroy configuration
         id: read_destroy_config
         run: |
           DESTROY=$(jq -r '${{ inputs.environment}}' ./infra/destroy_config.json)
