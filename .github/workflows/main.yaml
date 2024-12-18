@@ -14,8 +14,8 @@ jobs:
     uses: ./.github/workflows/terraform.yaml
     with:
       environment: prod
-      aws_assume_role_arn: "${{ secrets.AWS_ASSUME_ROLE_ARN }}"
+      aws_assume_role_arn: "arn:aws:iam::680739360770:role/github-actions-vpdevx-pipeline"
       aws_region: "us-east-1"
-      aws_statefile_s3_bucket: "${{ vars.AWS_STATEFILE_S3_BUCKET }}"
-      aws_lock_dynamodb_table: "${{ vars.AWS_LOCK_DYNAMODB_TABLE }}"
+      aws_statefile_s3_bucket: "terraform-statefile-us-east-1"
+      aws_lock_dynamodb_table: "terraform-statelock-us-east-1"
   
