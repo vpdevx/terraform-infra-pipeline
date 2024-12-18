@@ -42,7 +42,7 @@ jobs:
         with:
           role-to-assume: ${{ inputs.aws_assume_role_arn }}
           role-session-name: Terraform_OIDC
-          region: ${{ inputs.aws_region }}
+          aws-region: ${{ inputs.aws_region }}
       
       - name: Terraform Init
         run: |
