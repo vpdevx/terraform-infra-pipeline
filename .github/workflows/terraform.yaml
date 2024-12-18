@@ -57,13 +57,11 @@ jobs:
           cd infra && terraform validate
 
       - name: Terraform Plan
-        run: |
-          cd infra && 
+        run: cd infra && 
           terraform workspace select ${{ inputs.environment }} || terraform workspace new ${{ inputs.environment }} &&
           terraform plan -var-file="./envs/${{ inputs.environment }}/terraform.tfvars" -out="${{ inputs.environment }}.tfplan"
 
       - name: Terraform Apply
-        run: |
-          cd infra &&
+        run: cd infra &&
           terraform workspace select ${{ inputs.environment }} || terraform workspace new ${{ inputs.environment }} &&
           terraform apply "${{ inputs.environment }}.tfplan"
