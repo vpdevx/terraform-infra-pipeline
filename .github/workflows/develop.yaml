@@ -1,0 +1,21 @@
+name: Dev deploy
+
+on:
+  push:
+    branches:
+      - dev
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  terraform:
+    uses: ./.github/workflows/terraform.yaml
+    with:
+      environment: dev
+      aws_assume_role_arn: "arn:aws:iam::680739360770:role/github-actions-vpdevx-pipeline"
+      aws_region: "us-east-1"
+      aws_statefile_s3_bucket: "terraform-statefile-us-east-1"
+      aws_lock_dynamodb_table: "terraform-statelock-us-east-1"
+  
